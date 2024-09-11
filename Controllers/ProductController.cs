@@ -35,6 +35,11 @@ public class ProductController : ApiController
     public async Task<ActionResult<ProductDto>> GetProductByIdAsync([FromRoute] int productId)
     {
         var product = await _productRepository.GetByIdAsync(productId);
+        if(product is null)
+        {
+            return NotFound($"There is no product with this id : {productId}");
+        }
+
         var productDto = _mapper.Map<ProductDto>(product);
         return Ok(productDto);
     }
@@ -70,7 +75,7 @@ public class ProductController : ApiController
             var pagedProducts = await _productRepository.SearchAsync(searchData);
             var result = _mapper.Map<IEnumerable<ProductDto>>(pagedProducts.Items);
 
-            Response.Headers.Add("X-PagingData", JsonSerializer.Serialize(pagedProducts.Data));
+            Response.Headers.Add("X-TotalRecordCount", pagedProducts.Data.TotalRecordCount.ToString());
 
             return Ok(result);
         }

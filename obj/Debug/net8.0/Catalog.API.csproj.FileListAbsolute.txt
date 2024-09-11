@@ -288,3 +288,4 @@ H:\Programming\Webbbbbbbbb\Bardal Practices\C#\Catalog.API\obj\Debug\net8.0\refi
 H:\Programming\Webbbbbbbbb\Bardal Practices\C#\Catalog.API\obj\Debug\net8.0\Catalog.API.pdb
 H:\Programming\Webbbbbbbbb\Bardal Practices\C#\Catalog.API\obj\Debug\net8.0\Catalog.API.genruntimeconfig.cache
 H:\Programming\Webbbbbbbbb\Bardal Practices\C#\Catalog.API\obj\Debug\net8.0\ref\Catalog.API.dll
+H:\Programming\Webbbbbbbbb\Bardal Practices\C#\Catalog.API\obj\Debug\net8.0\Catalog.API.sourcelink.json

@@ -46,14 +46,14 @@ builder.Services.AddCors(options =>
             policy.AllowAnyOrigin()
                   .AllowAnyMethod()
                   .AllowAnyHeader()
-                  .WithExposedHeaders("X-PagingData");
+                  .WithExposedHeaders("X-TotalRecordCount");
         }
         else 
         {
             policy.WithOrigins("www.domain1.com", "www.domain2.com")
                   .WithMethods("GET", "POST")
                   .WithHeaders("h1", "h2")
-                  .WithExposedHeaders("X-PagingData");
+                  .WithExposedHeaders("X-TotalRecordCount");
         }
     });
 });

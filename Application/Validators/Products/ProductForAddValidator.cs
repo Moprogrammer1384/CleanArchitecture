@@ -1,7 +1,7 @@
 using Catalog.API.Application.Dtos.Products;
 using FluentValidation;
 
-namespace Catalog.API.Application.Validators;
+namespace Catalog.API.Application.Validators.Products;
 
 public class ProductForAddValidator : AbstractValidator<ProductForAddDto>
 {

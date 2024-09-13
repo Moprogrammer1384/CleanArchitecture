@@ -11,11 +11,7 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
         builder.ToTable("Products");
         
         builder.HasKey(p => p.Id);
-
-        // builder.Property(p => p.Id).UseIdentityColumn(seed: 999, increment: 5);
-
-        // builder.Property(p => p.Id).UseIdentityColumn();
-
+        
         builder.Property(p => p.Id).UseHiLo();
 
         builder.Property(p => p.Name).IsRequired().IsUnicode().HasMaxLength(100);

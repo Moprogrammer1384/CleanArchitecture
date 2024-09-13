@@ -10,12 +10,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Catalog.API.Controllers;
 
-public class ProductController : ApiController
+public class ProductsController : ApiController
 {
     private readonly IProductRepository _productRepository;
     private readonly IMapper _mapper;
 
-    public ProductController(IProductRepository productRepository, IMapper mapper)
+    public ProductsController(IProductRepository productRepository, IMapper mapper)
     {
         this._mapper = mapper;
         this._productRepository = productRepository;

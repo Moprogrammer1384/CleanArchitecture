@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Catalog.API.Infrastructure.Security;
+using Catalog.API.Infrastructure.Security.Options;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,8 +27,8 @@ builder.Services.AddDbContext<CatalogContext>(options =>
     }
     else
     {
-        var userId = builder.Configuration["UserId"].ToString();
-        var password = builder.Configuration["Password"].ToString();
+        var userId = builder.Configuration["UserId"]!.ToString();
+        var password = builder.Configuration["Password"]!.ToString();
         var connectionStringBuilder = new SqlConnectionStringBuilder(
             builder.Configuration.GetConnectionString("Catalog"));
         connectionStringBuilder.UserID = userId;
@@ -61,6 +62,12 @@ builder.Services.AddCors(options =>
         }
     });
 });
+builder.Services.Configure<UserServiceOptions>(options => 
+{
+    var secretKey = builder.Configuration["JWTSecretKey"]!.ToString();
+    options.SecretKey = secretKey;
+});
+
 
 var app = builder.Build();
 

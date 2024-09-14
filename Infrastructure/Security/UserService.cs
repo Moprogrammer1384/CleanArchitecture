@@ -8,25 +8,29 @@ using System.Threading.Tasks;
 using Catalog.API.Application.Contract;
 using Catalog.API.Application.Dtos.Users;
 using Catalog.API.Application.Exceptions;
+using Catalog.API.Infrastructure.Security.Options;
 using Catalog.API.Models;
 using CSharpFunctionalExtensions;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Catalog.API.Infrastructure.Security;
 
 public class UserService : IUserService
-{
-    private const string secretKey = "$ My Secret Key 1384 mohammad ali amirkhani @";
+{    
     private readonly IUserRepository _userRepository;
     private readonly IPasswordService _passwordService;
+    private readonly UserServiceOptions _userServiceOptions;
 
     public UserService(
         IUserRepository userRepository,
-        IPasswordService passwordService)
+        IPasswordService passwordService,
+        IOptions<UserServiceOptions> options)
     {
         this._userRepository = userRepository;
         this._passwordService = passwordService;
+        this._userServiceOptions = options.Value;
     }
 
     public async Task<Result<UserTokenDto>> LoginUserAsync(UserLoginDto userLoginDto)
@@ -51,7 +55,7 @@ public class UserService : IUserService
         };
         
         var signingCredentials = new SigningCredentials(
-            new SymmetricSecurityKey(Encoding.Default.GetBytes(secretKey)),
+            new SymmetricSecurityKey(Encoding.Default.GetBytes(_userServiceOptions.SecretKey)),
             SecurityAlgorithms.HmacSha256
         );
 

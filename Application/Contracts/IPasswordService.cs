@@ -1,5 +1,3 @@
-
-
 namespace Catalog.API.Application.Contract;
 
 public interface IPasswordService

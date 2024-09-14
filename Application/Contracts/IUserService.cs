@@ -1,4 +1,3 @@
-
 using Catalog.API.Application.Dtos.Users;
 using CSharpFunctionalExtensions;
 

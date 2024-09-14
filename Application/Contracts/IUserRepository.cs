@@ -1,4 +1,3 @@
-
 using Catalog.API.Models;
 
 namespace Catalog.API.Application.Contract;

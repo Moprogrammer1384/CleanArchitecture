@@ -1,8 +1,6 @@
-
 using Catalog.API.Abstractions;
 using Catalog.API.Application.Contract;
 using Catalog.API.Application.Dtos.Users;
-using Catalog.API.Application.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Catalog.API.Controllers;

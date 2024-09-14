@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Catalog.API.Application.Contract;
 using Catalog.API.Application.Contract.Data;
 using Catalog.API.Models;
